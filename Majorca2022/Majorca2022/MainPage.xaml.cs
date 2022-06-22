@@ -22,7 +22,7 @@ namespace Majorca2022
         public MainPage()
         {
             InitializeComponent();
-            if(month == 8 && day <20 && year == 2022 || month < 8 && year == 2022) { DayCount(); before = false; FlyDayButton.Text = "Days"; }
+            if(month == 8 && day <20 && year == 2022 || month < 8 && year == 2022) { DayCount(); before = true; FlyDayButton.Text = "Days"; }
             BackgroundColor = Color.White;
         }
 
@@ -135,7 +135,7 @@ namespace Majorca2022
 
         private void DayCount()
         {
-            input = "";
+            input = ""; Box.Text = "";
             DateTime futurDate = Convert.ToDateTime("07/08/2022"); DateTime TodayDate = DateTime.Now;
             Box.Text += Convert.ToInt32((futurDate - TodayDate).TotalDays); Box.Text += " Days";
         }
