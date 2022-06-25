@@ -107,7 +107,8 @@ namespace Majorca2022
 
         private void SOSButton_Clicked(object sender, EventArgs e)
         {
-
+            input = "";
+            Box.Text = "Any Emergency 112";
         }
 
         private void GBPButton_Clicked(object sender, EventArgs e)
