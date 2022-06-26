@@ -3,14 +3,23 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Speech.Recognition;
 using Xamarin.Forms;
+using System.Globalization;
+
+
 
 namespace Majorca2022
 {
+    
+
     public partial class MainPage : ContentPage
     {
         string input = "";
+
+        
 
         int buttonpress = 0;
         int day = DateTime.Now.Day;
@@ -26,6 +35,9 @@ namespace Majorca2022
             else { TimeCount(); FlyDayButton.Text = "Flight"; }
             BackgroundColor = Color.White;
         }
+
+
+        
 
         private void Button1_Clicked(object sender, EventArgs e)
         {
@@ -103,7 +115,7 @@ namespace Majorca2022
 
         private void FlyDayButton_Clicked(object sender, EventArgs e)
         {
-            if (before) { DayCount(); }
+            if (before) { DayCount(); } 
         }
 
         private void SOSButton_Clicked(object sender, EventArgs e)
@@ -114,7 +126,6 @@ namespace Majorca2022
 
         private void GBPButton_Clicked(object sender, EventArgs e)
         {
-
         }
 
         private void TimeButton_Clicked(object sender, EventArgs e)
@@ -126,7 +137,8 @@ namespace Majorca2022
         {
             input = "";
             Random random = new Random(); int rng = random.Next(1, 3);
-            if(rng == 2) { Box.Text = "Heads"; } else { Box.Text = "Tails"; }
+            if(rng == 2) { Box.Text = "Heads"; }
+            else { Box.Text = "Tails"; }
         }
 
         private void StatsButton_Clicked(object sender, EventArgs e)
@@ -142,21 +154,22 @@ namespace Majorca2022
             Box.Text += Convert.ToInt32((futurDate - TodayDate).TotalDays); Box.Text += " Days";
         }
 
-        private void TimeCount()
+        public  void TimeCount()
         {
-            Box.Text = "";
-            input = "";
-            int mallorcahour;
-            int londonhour;
-
-            if (before) { londonhour = DateTime.Now.Hour; mallorcahour = londonhour + 1; }
-            else { mallorcahour = DateTime.Now.Hour; londonhour = mallorcahour - 1; }
             
-            if(londonhour > 24) { londonhour -= 24; }
-            if(mallorcahour > 24) { mallorcahour -= 24; }
+                Box.Text = "";
+                input = "";
+                int mallorcahour;
+                int londonhour;
 
-            Box.Text += "London:" + londonhour + ":" + DateTime.Now.Minute;
-            Box.Text += "\nMajorca:" + mallorcahour + ":" + DateTime.Now.Minute;
+                if (before) { londonhour = DateTime.Now.Hour; mallorcahour = londonhour + 1; }
+                else { mallorcahour = DateTime.Now.Hour; londonhour = mallorcahour - 1; }
+
+                if (londonhour > 24) { londonhour -= 24; }
+                if (mallorcahour > 24) { mallorcahour -= 24; }
+
+                Box.Text += "London:" + londonhour + ":" + DateTime.Now.Minute;
+                Box.Text += "\nMajorca:" + mallorcahour + ":" + DateTime.Now.Minute;                    
         }
     }
 }

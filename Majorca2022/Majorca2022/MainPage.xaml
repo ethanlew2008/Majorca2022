@@ -2,9 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Majorca2022.MainPage">
+             
 
     <StackLayout>
-        <Label Text="" FontSize="Title" Margin="0,50,0,50" x:Name="Box" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="Black"/>
+         <Label Text="" FontSize="Title" Margin="0,50,0,50" x:Name="Box" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" TextColor="Black" />
 
         <Grid Margin="50,0,50,100" VerticalOptions="EndAndExpand">
             <Grid.RowDefinitions>
