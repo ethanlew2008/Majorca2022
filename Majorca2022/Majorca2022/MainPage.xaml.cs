@@ -22,7 +22,8 @@ namespace Majorca2022
         public MainPage()
         {
             InitializeComponent();
-            if(month == 8 && day <20 && year == 2022 || month < 8 && year == 2022) { DayCount(); before = true; FlyDayButton.Text = "Days"; }
+            if(month == 8 && day <07 && year == 2022 || month < 8 && year == 2022) { DayCount(); before = true; FlyDayButton.Text = "Days"; }
+            else { TimeCount(); FlyDayButton.Text = "Flight"; }
             BackgroundColor = Color.White;
         }
 
@@ -118,7 +119,7 @@ namespace Majorca2022
 
         private void TimeButton_Clicked(object sender, EventArgs e)
         {
-
+            TimeCount();
         }
 
         private void FlipButton_Clicked(object sender, EventArgs e)
@@ -143,7 +144,19 @@ namespace Majorca2022
 
         private void TimeCount()
         {
+            Box.Text = "";
+            input = "";
+            int mallorcahour;
+            int londonhour;
 
+            if (before) { londonhour = DateTime.Now.Hour; mallorcahour = londonhour + 1; }
+            else { mallorcahour = DateTime.Now.Hour; londonhour = mallorcahour - 1; }
+            
+            if(londonhour > 24) { londonhour -= 24; }
+            if(mallorcahour > 24) { mallorcahour -= 24; }
+
+            Box.Text += "London:" + londonhour + ":" + DateTime.Now.Minute;
+            Box.Text += "\nMajorca:" + mallorcahour + ":" + DateTime.Now.Minute;
         }
     }
 }
