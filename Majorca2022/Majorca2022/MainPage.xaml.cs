@@ -22,9 +22,10 @@ namespace Majorca2022
         int day = DateTime.Now.Day;
         int month = DateTime.Now.Month;
         int year = DateTime.Now.Year;
+        int hour = DateTime.Now.Hour;
         int flightmins = 0;
 
-        Stopwatch flight = new Stopwatch();
+        Stopwatch flight = new Stopwatch(); double percentage = 0;
 
         bool before = false;
         bool devmode = false;
@@ -33,7 +34,7 @@ namespace Majorca2022
             InitializeComponent();
             if (month == 8 && day < 07 && year == 2022 || month < 8 && year == 2022) { before = true; DayCount(); FlyDayButton.Text = "Days"; }
             else { TimeCount(); FlyDayButton.Text = "Flight"; }
-            BackgroundColor = Color.White;
+            DarkOrLight();
         }
 
         private void Button1_Clicked(object sender, EventArgs e)
@@ -111,6 +112,7 @@ namespace Majorca2022
 
         private void GBPButton_Clicked(object sender, EventArgs e)
         {
+            
             double maj = 0;
 
             try { Convert.ToInt32(input); }
@@ -143,14 +145,18 @@ namespace Majorca2022
 
             if (!before || devmode == true)
             {
-                if (!flight.IsRunning) { flight.Start(); Box.Text = "Flight Started"; }
+                if (!flight.IsRunning) { flight.Restart(); Box.Text = "Flight Started"; }
                 else
                 {
+                    if(flight.ElapsedMilliseconds <= 0) { Box.Text = "Welcome"; input = ""; flight.Stop(); return; }
                     flightmins = 8400000 - Convert.ToInt32(flight.ElapsedMilliseconds);
                     flightmins /= 1000; flightmins /= 60;
                     TimeSpan spWorkMin = TimeSpan.FromMinutes(flightmins);
                     string workHours = spWorkMin.ToString(@"hh\:mm");
+                    percentage = flightmins / 140; percentage *= 100;
+                    percentage = Convert.ToInt32(percentage); percentage = 100 - percentage; 
                     Box.Text = workHours;
+                    Box.Text += "\n"; Box.Text += percentage; Box.Text += "% Left";
                 }
             }
             else
@@ -164,8 +170,7 @@ namespace Majorca2022
 
         public  void TimeCount()
         {   
-                Box.Text = "";
-                input = "";
+                Box.Text = "";input = "";               
                 int mallorcahour;
                 int londonhour;
 
@@ -177,6 +182,18 @@ namespace Majorca2022
 
                 Box.Text += "London:" + londonhour + ":" + DateTime.Now.Minute;
                 Box.Text += "\nMajorca:" + mallorcahour + ":" + DateTime.Now.Minute;                    
+        }
+        
+        public void DarkOrLight()
+        {
+           if(hour > 20 && hour < 8)
+            {
+                BackgroundImageSource = "SerenAppNight.png"; Box.TextColor = Color.White;
+            }
+            else
+            {            
+                BackgroundImageSource = "SerenAppDay.jpg"; Box.TextColor = Color.Black;
+            }           
         }
     }
 }

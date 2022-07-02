@@ -9,7 +9,6 @@ namespace Majorca2022
         public App()
         {
             InitializeComponent();
-
             MainPage = new MainPage();
         }
 
