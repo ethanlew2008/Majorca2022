@@ -19,6 +19,7 @@ namespace Majorca2022
 
         protected override void OnSleep()
         {
+
         }
 
         protected override void OnResume()

@@ -25,25 +25,24 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Row="0" Grid.Column="0" Text="1" x:Name="Button1" Clicked="Button1_Clicked" CornerRadius="20" BackgroundColor="Salmon" BorderColor="Black"  BorderWidth="1" TextColor="White"/>
-            <Button Grid.Row="0" Grid.Column="1" Text="2" x:Name="Button2" Clicked="Button2_Clicked" CornerRadius="20" BackgroundColor="Salmon" BorderColor="Black" BorderWidth="1" TextColor="White"/>
-            <Button Grid.Row="0" Grid.Column="2" Text="3" x:Name="Button3" Clicked="Button3_Clicked" CornerRadius="20" BackgroundColor="Salmon" BorderColor="Black" BorderWidth="1" TextColor="White"/>
-            <Button Grid.Row="1" Grid.Column="0" Text="4" x:Name="Button4" Clicked="Button4_Clicked" CornerRadius="20" BackgroundColor="Salmon" BorderColor="Black" BorderWidth="1" TextColor="White"/>
-            <Button Grid.Row="1" Grid.Column="1" Text="5" x:Name="Button5" Clicked="Button5_Clicked" CornerRadius="20" BackgroundColor="Salmon" BorderColor="Black" BorderWidth="1" TextColor="White"/>
-            <Button Grid.Row="1" Grid.Column="2" Text="6" x:Name="Button6" Clicked="Button6_Clicked" CornerRadius="20" BackgroundColor="Salmon" BorderColor="Black" BorderWidth="1" TextColor="White"/>
-            <Button Grid.Row="2" Grid.Column="0" Text="7" x:Name="Button7" Clicked="Button7_Clicked" CornerRadius="20" BackgroundColor="Salmon"  BorderColor="Black" BorderWidth="1" TextColor="White"/>
-            <Button Grid.Row="2" Grid.Column="1" Text="8" x:Name="Button8" Clicked="Button8_Clicked" CornerRadius="20" BackgroundColor="Salmon"  BorderColor="Black" BorderWidth="1" TextColor="White"/>
-            <Button Grid.Row="2" Grid.Column="2" Text="9" x:Name="Button9" Clicked="Button9_Clicked" CornerRadius="20" BackgroundColor="Salmon"  BorderColor="Black" BorderWidth="1" TextColor="White"/>
-            <Button Grid.Row="3" Grid.Column="0" Text="." x:Name="Dotbutton" Clicked="Dotbutton_Clicked" CornerRadius="20" BackgroundColor="Salmon" BorderColor="Black" BorderWidth="1" TextColor="White"/>
-            <Button Grid.Row="3" Grid.Column="1" Text="0" x:Name="Button0" Clicked="Button0_Clicked" CornerRadius="20" BackgroundColor="Salmon" BorderColor="Black" BorderWidth="1" TextColor="White"/>
-            <Button Grid.Row="3" Grid.Column="2" Text="Del" x:Name="ButtonDel" Clicked="ButtonDel_Clicked" CornerRadius="20" BackgroundColor="Salmon" BorderColor="Black" BorderWidth="1" TextColor="White"/>
+            <Button Grid.Row="0" Grid.Column="0" Text="1" x:Name="Button1" Clicked="Button1_Clicked" CornerRadius="20" BackgroundColor="Red" BorderColor="Black"  BorderWidth="1" TextColor="White"/>
+            <Button Grid.Row="0" Grid.Column="1" Text="2" x:Name="Button2" Clicked="Button2_Clicked" CornerRadius="20" BackgroundColor="Red" BorderColor="Black" BorderWidth="1" TextColor="White"/>
+            <Button Grid.Row="0" Grid.Column="2" Text="3" x:Name="Button3" Clicked="Button3_Clicked" CornerRadius="20" BackgroundColor="Red" BorderColor="Black" BorderWidth="1" TextColor="White"/>
+            <Button Grid.Row="1" Grid.Column="0" Text="4" x:Name="Button4" Clicked="Button4_Clicked" CornerRadius="20" BackgroundColor="Orange" BorderColor="Black" BorderWidth="1" TextColor="White"/>
+            <Button Grid.Row="1" Grid.Column="1" Text="5" x:Name="Button5" Clicked="Button5_Clicked" CornerRadius="20" BackgroundColor="Orange" BorderColor="Black" BorderWidth="1" TextColor="White"/>
+            <Button Grid.Row="1" Grid.Column="2" Text="6" x:Name="Button6" Clicked="Button6_Clicked" CornerRadius="20" BackgroundColor="Orange" BorderColor="Black" BorderWidth="1" TextColor="White"/>
+            <Button Grid.Row="2" Grid.Column="0" Text="7" x:Name="Button7" Clicked="Button7_Clicked" CornerRadius="20" BackgroundColor="Orange"  BorderColor="Black" BorderWidth="1" TextColor="White"/>
+            <Button Grid.Row="2" Grid.Column="1" Text="8" x:Name="Button8" Clicked="Button8_Clicked" CornerRadius="20" BackgroundColor="Orange"  BorderColor="Black" BorderWidth="1" TextColor="White"/>
+            <Button Grid.Row="2" Grid.Column="2" Text="9" x:Name="Button9" Clicked="Button9_Clicked" CornerRadius="20" BackgroundColor="Orange"  BorderColor="Black" BorderWidth="1" TextColor="White"/>
+            <Button Grid.Row="3" Grid.Column="0" Text="." x:Name="Dotbutton" Clicked="Dotbutton_Clicked" CornerRadius="20" BackgroundColor="Red" BorderColor="Black" BorderWidth="1" TextColor="White"/>
+            <Button Grid.Row="3" Grid.Column="1" Text="0" x:Name="Button0" Clicked="Button0_Clicked" CornerRadius="20" BackgroundColor="Red" BorderColor="Black" BorderWidth="1" TextColor="White"/>
+            <Button Grid.Row="3" Grid.Column="2" Text="Del" x:Name="ButtonDel" Clicked="ButtonDel_Clicked" CornerRadius="20" BackgroundColor="Red" BorderColor="Black" BorderWidth="1" TextColor="White"/>
 
-            <Button Grid.Row="5" Grid.Column="0" Text="" x:Name="FlyDayButton" Clicked="FlyDayButton_Clicked" CornerRadius="20" BackgroundColor="LightSalmon" BorderColor="Black" BorderWidth="1" TextColor="White"/>
-            <Button Grid.Row="5" Grid.Column="1" Text="SOS" x:Name="SOSButton" Clicked="SOSButton_Clicked" CornerRadius="5" BackgroundColor="Red" BorderColor="Black" BorderWidth="1" TextColor="White"/>
-            <Button Grid.Row="5" Grid.Column="2" Text="GBP" x:Name="GBPButton" Clicked="GBPButton_Clicked" CornerRadius="20" BackgroundColor="LightSalmon" BorderColor="Black" BorderWidth="1" TextColor="White"/>
-            <Button Grid.Row="6" Grid.Column="0" Text="Time" x:Name="TimeButton" Clicked="TimeButton_Clicked" CornerRadius="20" BackgroundColor="LightSalmon" BorderColor="Black" BorderWidth="1" TextColor="White"/>
-            <Button Grid.Row="6" Grid.Column="1" Text="Flip" x:Name="FlipButton" Clicked="FlipButton_Clicked" CornerRadius="20" BackgroundColor="LightSalmon" BorderColor="Black" BorderWidth="1" TextColor="White"/>
-            <Button Grid.Row="6" Grid.Column="2" Text="Stats" x:Name="StatsButton" Clicked="StatsButton_Clicked" CornerRadius="20" BackgroundColor="LightSalmon" BorderColor="Black" BorderWidth="1" TextColor="White"/>
+            <Button Grid.Row="5" Grid.Column="0" Text="" x:Name="FlyDayButton" Clicked="FlyDayButton_Clicked" CornerRadius="20" BackgroundColor="AliceBlue" BorderColor="Black" BorderWidth="1" TextColor="Black"/>
+            <Button Grid.Row="5" Grid.Column="1" Text="SOS" x:Name="SOSButton" Clicked="SOSButton_Clicked" CornerRadius="5" BackgroundColor="LawnGreen" BorderColor="Black" BorderWidth="1" TextColor="Black"/>
+            <Button Grid.Row="5" Grid.Column="2" Text="GBP" x:Name="GBPButton" Clicked="GBPButton_Clicked" CornerRadius="20" BackgroundColor="AliceBlue" BorderColor="Black" BorderWidth="1" TextColor="Black"/>
+            <Button Grid.Row="6" Grid.Column="0" Text="Time" x:Name="TimeButton" Clicked="TimeButton_Clicked" CornerRadius="20" BackgroundColor="AliceBlue" BorderColor="Black" BorderWidth="1" TextColor="Black"/>
+            <Button Grid.Row="6" Grid.Column="2" Text="Flip" x:Name="FlipButton" Clicked="FlipButton_Clicked" CornerRadius="20" BackgroundColor="AliceBlue" BorderColor="Black" BorderWidth="1" TextColor="Black"/>
 
 
         </Grid>
