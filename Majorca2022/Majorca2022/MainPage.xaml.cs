@@ -10,6 +10,7 @@ using Xamarin.Forms;
 using System.Globalization;
 using System.Diagnostics;
 using System.IO;
+using System.Globalization;
 
 namespace Majorca2022
 {
@@ -26,6 +27,7 @@ namespace Majorca2022
         int flightmins = 0;
 
         Stopwatch flight = new Stopwatch(); double percentage = 0;
+        Stopwatch sleep = new Stopwatch(); double sleephours = 0;
 
         bool before = false;
         bool devmode = false;
@@ -36,7 +38,7 @@ namespace Majorca2022
             else { TimeCount(); FlyDayButton.Text = "Flight"; }
             
             if (hour > 7 && hour < 19) { BackgroundImageSource = "SerenAppDay.jpg"; Box.TextColor = Color.Black; }
-            else { BackgroundImageSource = "SerenAppNight.png"; Box.TextColor = Color.White; }           
+            else { BackgroundImageSource = "SerenAppNight.png"; Box.TextColor = Color.White; }          
         }
 
         private void Button1_Clicked(object sender, EventArgs e)
@@ -153,10 +155,10 @@ namespace Majorca2022
                     if(flight.ElapsedMilliseconds <= 0) { Box.Text = "Welcome"; input = ""; flight.Stop(); return; }
                     flightmins = 8400000 - Convert.ToInt32(flight.ElapsedMilliseconds);
                     flightmins /= 1000; flightmins /= 60;
+                    percentage = flightmins - 140; percentage /= 140; percentage *= 100; percentage = 100 + percentage;
+                    percentage = Convert.ToInt32(percentage);
                     TimeSpan spWorkMin = TimeSpan.FromMinutes(flightmins);
-                    string workHours = spWorkMin.ToString(@"hh\:mm");
-                    percentage = flightmins / 140; percentage *= 100;
-                    percentage = Convert.ToInt32(percentage); percentage = 100 - percentage; 
+                    string workHours = spWorkMin.ToString(@"hh\:mm");                     
                     Box.Text = workHours;
                     Box.Text += "\n"; Box.Text += percentage; Box.Text += "% Left";
                 }
@@ -185,7 +187,23 @@ namespace Majorca2022
                 Box.Text += "London:" + londonhour + ":" + DateTime.Now.Minute;
                 Box.Text += "\nMajorca:" + mallorcahour + ":" + DateTime.Now.Minute;                    
         }
-        
-       
+
+        private void SleepButton_Clicked(object sender, EventArgs e)
+        {
+            input = "";
+            if (!sleep.IsRunning) { sleep.Start(); Box.Text = "Goodnight"; SleepButton.Text = "End"; BackgroundImageSource = "SerenAppNight.png"; }
+            else
+            {
+                sleep.Stop();
+                Box.Text = "Good Morning\n";
+                sleephours = sleep.ElapsedMilliseconds / 1000; sleephours /= 60;
+                TimeSpan spWorkMin = TimeSpan.FromMinutes(sleephours);
+                string workHours = spWorkMin.ToString(@"hh\:mm");
+                Box.Text += "You Slept " + workHours;
+                Box.Text += "\nYou took" + Convert.ToInt32(sleephours * 16) + "Breaths";
+                SleepButton.Text = "Sleep";
+                BackgroundImageSource = "SerenAppDay.jpg";
+            }
+        }
     }
 }
