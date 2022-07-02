@@ -34,7 +34,9 @@ namespace Majorca2022
             InitializeComponent();
             if (month == 8 && day < 07 && year == 2022 || month < 8 && year == 2022) { before = true; DayCount(); FlyDayButton.Text = "Days"; }
             else { TimeCount(); FlyDayButton.Text = "Flight"; }
-            DarkOrLight();
+            
+            if (hour > 7 && hour < 19) { BackgroundImageSource = "SerenAppDay.jpg"; Box.TextColor = Color.Black; }
+            else { BackgroundImageSource = "SerenAppNight.png"; Box.TextColor = Color.White; }           
         }
 
         private void Button1_Clicked(object sender, EventArgs e)
@@ -184,16 +186,6 @@ namespace Majorca2022
                 Box.Text += "\nMajorca:" + mallorcahour + ":" + DateTime.Now.Minute;                    
         }
         
-        public void DarkOrLight()
-        {
-           if(hour > 20 && hour < 8)
-            {
-                BackgroundImageSource = "SerenAppNight.png"; Box.TextColor = Color.White;
-            }
-            else
-            {            
-                BackgroundImageSource = "SerenAppDay.jpg"; Box.TextColor = Color.Black;
-            }           
-        }
+       
     }
 }
