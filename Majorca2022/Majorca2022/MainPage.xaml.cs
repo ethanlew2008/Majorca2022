@@ -10,7 +10,6 @@ using Xamarin.Forms;
 using System.Globalization;
 using System.Diagnostics;
 using System.IO;
-using System.Globalization;
 
 namespace Majorca2022
 {
@@ -174,9 +173,9 @@ namespace Majorca2022
 
         public  void TimeCount()
         {   
-                Box.Text = "";input = "";               
-                int mallorcahour;
-                int londonhour;
+                Box.Text = "";input = "";
+                int mallorcahour = 0;
+                int londonhour = 0;
 
                 if (before) { londonhour = DateTime.Now.Hour; mallorcahour = londonhour + 1; }
                 else { mallorcahour = DateTime.Now.Hour; londonhour = mallorcahour - 1; }
@@ -191,7 +190,7 @@ namespace Majorca2022
         private void SleepButton_Clicked(object sender, EventArgs e)
         {
             input = "";
-            if (!sleep.IsRunning) { sleep.Start(); Box.Text = "Goodnight"; SleepButton.Text = "End"; BackgroundImageSource = "SerenAppNight.png"; }
+            if (!sleep.IsRunning) { sleep.Start(); Box.Text = "Goodnight"; SleepButton.Text = "End"; BackgroundImageSource = "SerenAppNight.png"; Box.TextColor = Color.White; }
             else
             {
                 sleep.Stop();
@@ -200,10 +199,11 @@ namespace Majorca2022
                 TimeSpan spWorkMin = TimeSpan.FromMinutes(sleephours);
                 string workHours = spWorkMin.ToString(@"hh\:mm");
                 Box.Text += "You Slept " + workHours;
-                Box.Text += "\nYou took" + Convert.ToInt32(sleephours * 16) + "Breaths";
+                Box.Text += "\nYou took " + Convert.ToInt32(sleephours * 16) + " Breaths";
                 SleepButton.Text = "Sleep";
                 BackgroundImageSource = "SerenAppDay.jpg";
+                Box.TextColor = Color.Black;
             }
-        }
+        }     
     }
 }
