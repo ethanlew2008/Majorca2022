@@ -36,7 +36,7 @@ namespace Majorca2022
             if (month == 8 && day < 07 && year == 2022 || month < 8 && year == 2022) { before = true; DayCount(); FlyDayButton.Text = "Days"; }
             else { TimeCount(); FlyDayButton.Text = "Flight"; }
             
-            if (hour > 7 && hour < 19) { BackgroundImageSource = "SerenAppDay.jpg"; Box.TextColor = Color.Black; }
+            if (hour > 6 && hour < 20) { BackgroundImageSource = "SerenAppDay.jpg"; Box.TextColor = Color.Black; }
             else { BackgroundImageSource = "SerenAppNight.png"; Box.TextColor = Color.White; }          
         }
 
@@ -114,13 +114,11 @@ namespace Majorca2022
         }
 
         private void GBPButton_Clicked(object sender, EventArgs e)
-        {
-            
+        {            
             double maj = 0;
 
-            try { Convert.ToInt32(input); }
-            catch (Exception) { Box.Text = "Number Too Big"; input = ""; return; }
-           
+            try { Convert.ToInt32(input); } catch (Exception) { Box.Text = "Number Too Big"; input = ""; return; }
+
             maj = Convert.ToDouble(input) / 1.16;
             string cultures = maj.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-GB"));
             Box.Text = "That's About " + cultures;
@@ -136,8 +134,7 @@ namespace Majorca2022
         {
             input = "";
             Random random = new Random(); int rng = random.Next(1, 3);
-            if(rng == 2) { Box.Text = "Heads"; }
-            else { Box.Text = "Tails"; }
+            if(rng == 2) { Box.Text = "Heads"; } else { Box.Text = "Tails"; }
         }
 
         private void DayCount()
@@ -164,8 +161,9 @@ namespace Majorca2022
             }
             else
             {
-                input = ""; Box.Text = "";
+                input = ""; Box.Text = "";               
                 DateTime futurDate = Convert.ToDateTime("07/08/2022"); DateTime TodayDate = DateTime.Now;
+                if (Convert.ToInt32((futurDate - TodayDate).TotalDays) < 3) { int temp = Convert.ToInt32((futurDate - TodayDate).TotalDays); temp = Convert.ToInt32(temp * 24); Box.Text += temp + " Hours"; return; } 
                 Box.Text += Convert.ToInt32((futurDate - TodayDate).TotalDays); Box.Text += " Days";
             }
             
@@ -173,18 +171,23 @@ namespace Majorca2022
 
         public  void TimeCount()
         {   
-                Box.Text = "";input = "";
-                int mallorcahour = 0;
-                int londonhour = 0;
+            Box.Text = "";input = "";
+            int mallorcahour = 0;
+            int londonhour = 0;
+            int min = DateTime.Now.Minute;
+            string minstring = "";
 
-                if (before) { londonhour = DateTime.Now.Hour; mallorcahour = londonhour + 1; }
+            if (before) { londonhour = DateTime.Now.Hour; mallorcahour = londonhour + 1; }
                 else { mallorcahour = DateTime.Now.Hour; londonhour = mallorcahour - 1; }
 
                 if (londonhour > 24) { londonhour -= 24; }
                 if (mallorcahour > 24) { mallorcahour -= 24; }
 
-                Box.Text += "London:" + londonhour + ":" + DateTime.Now.Minute;
-                Box.Text += "\nMajorca:" + mallorcahour + ":" + DateTime.Now.Minute;                    
+                if(min.ToString().Length == 1 && min >= 10) { minstring = Convert.ToString(min) + "0"; }
+                if(min.ToString().Length == 1 && min < 10) { minstring = "0" + Convert.ToString(min); }
+
+            Box.Text += "London:" + londonhour + ":"; if(minstring == "") { Box.Text += min; } else { Box.Text += minstring; }
+            Box.Text += "\nMajorca:" + mallorcahour + ":"; if (minstring == "") { Box.Text += min; } else { Box.Text += minstring; } 
         }
 
         private void SleepButton_Clicked(object sender, EventArgs e)
@@ -196,13 +199,16 @@ namespace Majorca2022
                 sleep.Stop();
                 Box.Text = "Good Morning\n";
                 sleephours = sleep.ElapsedMilliseconds / 1000; sleephours /= 60;
+                
                 TimeSpan spWorkMin = TimeSpan.FromMinutes(sleephours);
                 string workHours = spWorkMin.ToString(@"hh\:mm");
                 Box.Text += "You Slept " + workHours;
                 Box.Text += "\nYou took " + Convert.ToInt32(sleephours * 16) + " Breaths";
                 SleepButton.Text = "Sleep";
-                BackgroundImageSource = "SerenAppDay.jpg";
-                Box.TextColor = Color.Black;
+
+                int hour = DateTime.Now.Hour;
+                if (hour > 6 && hour < 20) { BackgroundImageSource = "SerenAppDay.jpg"; Box.TextColor = Color.Black; }
+                else { BackgroundImageSource = "SerenAppNight.png"; Box.TextColor = Color.White; }
             }
         }     
     }
