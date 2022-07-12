@@ -119,7 +119,7 @@ namespace Majorca2022
 
             try { Convert.ToInt32(input); } catch (Exception) { Box.Text = "Number Too Big"; input = ""; return; }
 
-            maj = Convert.ToDouble(input) / 1.16;
+            maj = Convert.ToDouble(input) / 1.19;
             string cultures = maj.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-GB"));
             Box.Text = "That's About " + cultures;
             input = "";
@@ -174,20 +174,22 @@ namespace Majorca2022
             Box.Text = "";input = "";
             int mallorcahour = 0;
             int londonhour = 0;
-            int min = DateTime.Now.Minute;
-            string minstring = "";
+            string minstring = Convert.ToString(DateTime.Now.Minute);
 
             if (before) { londonhour = DateTime.Now.Hour; mallorcahour = londonhour + 1; }
-                else { mallorcahour = DateTime.Now.Hour; londonhour = mallorcahour - 1; }
+            else { mallorcahour = DateTime.Now.Hour; londonhour = mallorcahour - 1; }
 
                 if (londonhour > 24) { londonhour -= 24; }
                 if (mallorcahour > 24) { mallorcahour -= 24; }
 
-                if(min.ToString().Length == 1 && min >= 10) { minstring = Convert.ToString(min) + "0"; }
-                if(min.ToString().Length == 1 && min < 10) { minstring = "0" + Convert.ToString(min); }
+                if(minstring.Length == 1 && Convert.ToInt32(minstring) >= 10) { minstring = ""; minstring += "0"; minstring += DateTime.Now.Minute; } 
+                if(minstring.Length == 1 && Convert.ToInt32(minstring) < 10) { minstring += "0";}
 
-            Box.Text += "London:" + londonhour + ":"; if(minstring == "") { Box.Text += min; } else { Box.Text += minstring; }
-            Box.Text += "\nMajorca:" + mallorcahour + ":"; if (minstring == "") { Box.Text += min; } else { Box.Text += minstring; } 
+                if(minstring.Contains("PM PM") || minstring.Contains("AM AM")) { minstring = minstring.Substring(minstring.Length - 2); }
+
+
+            Box.Text += "London:" + londonhour + ":"; if(minstring == "") { Box.Text += minstring; } else { Box.Text += minstring; }
+            Box.Text += "\nMajorca:" + mallorcahour + ":"; if (minstring == "") { Box.Text += minstring; } else { Box.Text += minstring; } 
         }
 
         private void SleepButton_Clicked(object sender, EventArgs e)
