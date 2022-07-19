@@ -179,8 +179,8 @@ namespace Majorca2022
             if (before) { londonhour = DateTime.Now.Hour; mallorcahour = londonhour + 1; }
             else { mallorcahour = DateTime.Now.Hour; londonhour = mallorcahour - 1; }
 
-                if (londonhour > 24) { londonhour -= 24; }
-                if (mallorcahour > 24) { mallorcahour -= 24; }
+                if (londonhour >= 24) { londonhour -= 24; }
+                if (mallorcahour >= 24) { mallorcahour -= 24; }
 
                 if(minstring.Length == 1 && Convert.ToInt32(minstring) >= 10) { minstring = ""; minstring += "0"; minstring += DateTime.Now.Minute; } 
                 if(minstring.Length == 1 && Convert.ToInt32(minstring) < 10) { minstring += "0";}
