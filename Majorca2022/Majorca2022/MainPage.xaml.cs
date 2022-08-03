@@ -119,7 +119,7 @@ namespace Majorca2022
 
             try { Convert.ToInt32(input); } catch (Exception) { Box.Text = "Number Too Big"; input = ""; return; }
 
-            maj = Convert.ToDouble(input) / 1.17;
+            maj = Convert.ToDouble(input) / 1.20;
             string cultures = maj.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-GB"));
             Box.Text = "That's About " + cultures;
             input = "";
@@ -182,8 +182,8 @@ namespace Majorca2022
                 if (londonhour >= 24) { londonhour -= 24; }
                 if (mallorcahour >= 24) { mallorcahour -= 24; }
 
-                if(minstring.Length == 1 && Convert.ToInt32(minstring) >= 10) { minstring = ""; minstring += "0"; minstring += DateTime.Now.Minute; } 
-                if(minstring.Length == 1 && Convert.ToInt32(minstring) < 10) { minstring += "0";}
+                if(minstring.Length == 1 && Convert.ToInt32(minstring) >= 10) { minstring += "0"; } 
+                if(minstring.Length == 1 && Convert.ToInt32(minstring) < 10) { minstring = ""; minstring += "0"; minstring += DateTime.Now.Minute; }
 
                 if (londonhour < 0) { londonhour *= -1; }
                 if (mallorcahour < 0) { mallorcahour *= -1; }
