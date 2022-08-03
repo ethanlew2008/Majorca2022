@@ -7,6 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Speech.Recognition;
 using Xamarin.Forms;
+using Xamarin.Essentials;
 using System.Globalization;
 using System.Diagnostics;
 using System.IO;
@@ -27,6 +28,8 @@ namespace Majorca2022
 
         Stopwatch flight = new Stopwatch(); double percentage = 0;
         Stopwatch sleep = new Stopwatch(); double sleephours = 0;
+
+        //Thread thread = new Thread(new Thread());
 
         bool before = false;
         bool devmode = false;
@@ -110,10 +113,11 @@ namespace Majorca2022
         private void SOSButton_Clicked(object sender, EventArgs e)
         {
             input = ""; 
-            Box.Text = "Any Emergency 112";
+            try { PhoneDialer.Open("112"); }
+            catch (Exception) { Box.Text = "Any Emergency: 112"; }
         }
 
-        private void GBPButton_Clicked(object sender, EventArgs e)
+        public void GBPButton_Clicked(object sender, EventArgs e)
         {            
             double maj = 0;
 
@@ -188,7 +192,7 @@ namespace Majorca2022
                 if (londonhour < 0) { londonhour *= -1; }
                 if (mallorcahour < 0) { mallorcahour *= -1; }
 
-
+                
             Box.Text += "London:" + londonhour + ":"; if(minstring == "") { Box.Text += minstring; } else { Box.Text += minstring; }
             Box.Text += "\nMajorca:" + mallorcahour + ":"; if (minstring == "") { Box.Text += minstring; } else { Box.Text += minstring; } 
         }
@@ -213,6 +217,10 @@ namespace Majorca2022
                 if (hour > 6 && hour < 20) { BackgroundImageSource = "SerenAppDay.jpg"; Box.TextColor = Color.Black; }
                 else { BackgroundImageSource = "SerenAppNight.png"; Box.TextColor = Color.White; }
             }
-        }     
+        }
+
+       
+
+        
     }
 }
