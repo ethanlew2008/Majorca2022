@@ -33,24 +33,31 @@ namespace Majorca2022
 
         bool before = false;
         bool devmode = false;
+        bool pregunta = false;
+        bool majorca = false;
+        bool alicante = false;
         public MainPage()
         {
             InitializeComponent();
-            if (month == 8 && day < 07 && year == 2022 || month < 8 && year == 2022) { before = true; DayCount(); FlyDayButton.Text = "Days"; }
-            else { TimeCount(); FlyDayButton.Text = "Flight"; }
+            if (month == 8 && day < 07 && year == 2022 || month < 8 && year == 2022) { before = true; FlyDayButton.Text = "Days"; }
+            else { FlyDayButton.Text = "Flight"; }
             
             if (hour > 6 && hour < 20) { BackgroundImageSource = "SerenAppDay.jpg"; Box.TextColor = Color.Black; }
-            else { BackgroundImageSource = "SerenAppNight.png"; Box.TextColor = Color.White; }          
+            else { BackgroundImageSource = "SerenAppNight.png"; Box.TextColor = Color.White; }
+
+            Box.Text = "1.Majorca\n2.Alicante";
         }
 
         private void Button1_Clicked(object sender, EventArgs e)
         {
             input += "1"; Box.Text = input;
+            if(pregunta == false) { majorca = true; TimeCount(); pregunta = true; }
         }
 
         private void Button2_Clicked(object sender, EventArgs e)
         {
             input += "2"; Box.Text = input;
+            if(pregunta == false) { alicante = true; pregunta = true; TimeCount(); }
         }
 
         private void Button3_Clicked(object sender, EventArgs e)
@@ -194,7 +201,8 @@ namespace Majorca2022
 
                 
             Box.Text += "London:" + londonhour + ":"; if(minstring == "") { Box.Text += minstring; } else { Box.Text += minstring; }
-            Box.Text += "\nMajorca:" + mallorcahour + ":"; if (minstring == "") { Box.Text += minstring; } else { Box.Text += minstring; } 
+            if (alicante) { Box.Text += "\nAlicante:"; } else { Box.Text += "\nMajorca:"; }
+            Box.Text +=  mallorcahour + ":"; if (minstring == "") { Box.Text += minstring; } else { Box.Text += minstring; } 
         }
 
         private void SleepButton_Clicked(object sender, EventArgs e)
