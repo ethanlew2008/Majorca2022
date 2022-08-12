@@ -42,7 +42,7 @@
             <Button Grid.Row="5" Grid.Column="1" Text="SOS" x:Name="SOSButton" Clicked="SOSButton_Clicked" CornerRadius="5" BackgroundColor="Red" BorderColor="Black" BorderWidth="1" TextColor="White"/>
             <Button Grid.Row="5" Grid.Column="2" Text="GBP" x:Name="GBPButton" Clicked="GBPButton_Clicked" CornerRadius="20" BackgroundColor="DarkOrange" BorderColor="Black" BorderWidth="1" TextColor="White"/>
             <Button Grid.Row="6" Grid.Column="0" Text="Time" x:Name="TimeButton" Clicked="TimeButton_Clicked" CornerRadius="20" BackgroundColor="DarkOrange" BorderColor="Black" BorderWidth="1" TextColor="White"/>
-            <Button Grid.Row="6" Grid.Column="2" Text="Flip" x:Name="FlipButton" Clicked="FlipButton_Clicked" CornerRadius="20" BackgroundColor="DarkOrange" BorderColor="Black" BorderWidth="1" TextColor="White" />
+            <Button Grid.Row="6" Grid.Column="2" Text="Flash" x:Name="FlipButton" Clicked="FlipButton_Clicked" CornerRadius="20" BackgroundColor="DarkOrange" BorderColor="Black" BorderWidth="1" TextColor="White" />
             <Button Grid.Row="6" Grid.Column="1" Text="Sleep" x:Name="SleepButton" Clicked="SleepButton_Clicked" CornerRadius="20" BackgroundColor="DarkOrange" BorderColor="Black" BorderWidth="1" TextColor="White"/>
 
 

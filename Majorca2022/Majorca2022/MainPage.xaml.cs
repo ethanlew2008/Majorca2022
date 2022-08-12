@@ -11,6 +11,7 @@ using Xamarin.Essentials;
 using System.Globalization;
 using System.Diagnostics;
 using System.IO;
+using static Xamarin.Essentials.Permissions;
 
 namespace Majorca2022
 {
@@ -19,6 +20,7 @@ namespace Majorca2022
     public partial class MainPage : ContentPage
     {
         string input = "";
+        static bool flash = false;
 
         int day = DateTime.Now.Day;
         int month = DateTime.Now.Month;
@@ -130,7 +132,7 @@ namespace Majorca2022
 
             try { Convert.ToInt32(input); } catch (Exception) { Box.Text = "Number Too Big"; input = ""; return; }
 
-            maj = Convert.ToDouble(input) / 1.20;
+            maj = Convert.ToDouble(input) / 1.18;
             string cultures = maj.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-GB"));
             Box.Text = "That's About " + cultures;
             input = "";
@@ -143,10 +145,16 @@ namespace Majorca2022
 
         private void FlipButton_Clicked(object sender, EventArgs e)
         {
-            input = "";
-            Random random = new Random(); int rng = random.Next(1, 3);
-            if(rng == 2) { Box.Text = "Heads"; } else { Box.Text = "Tails"; }
+            FLash2Async();
         }
+
+        static async Task FLash2Async()
+        {
+            flash = !flash;
+            if (flash) { await Xamarin.Essentials.Flashlight.TurnOffAsync(); }
+            else { await Xamarin.Essentials.Flashlight.TurnOnAsync(); }
+        }
+
 
         private void DayCount()
         {
