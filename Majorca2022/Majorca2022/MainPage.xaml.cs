@@ -20,7 +20,7 @@ namespace Majorca2022
     public partial class MainPage : ContentPage
     {
         string input = "";
-        static bool flash = false;
+        static bool flash = true;
 
         int day = DateTime.Now.Day;
         int month = DateTime.Now.Month;
