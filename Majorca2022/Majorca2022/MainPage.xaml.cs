@@ -130,9 +130,9 @@ namespace Majorca2022
         {            
             double maj = 0;
 
-            try { Convert.ToInt32(input); } catch (Exception) { Box.Text = "Number Too Big"; input = ""; return; }
+            try { Convert.ToDouble(input); } catch (Exception) { Box.Text = "Number Too Big"; input = ""; return; }
 
-            maj = Convert.ToDouble(input) / 1.18;
+            maj = Convert.ToDouble(input) / 1.16;
             string cultures = maj.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-GB"));
             Box.Text = "That's About " + cultures;
             input = "";
