@@ -30,6 +30,7 @@ namespace Majorca2022
 
         Stopwatch flight = new Stopwatch(); double percentage = 0;
         Stopwatch sleep = new Stopwatch(); double sleephours = 0;
+        APIClient Client = new APIClient();
 
         //Thread thread = new Thread(new Thread());
 
@@ -41,6 +42,7 @@ namespace Majorca2022
         public MainPage()
         {
             InitializeComponent();
+            Client.GetGBP();
             if (month == 8 && day < 07 && year == 2022 || month < 8 && year == 2022) { before = true; FlyDayButton.Text = "Days"; }
             else { FlyDayButton.Text = "Flight"; }
             
@@ -128,11 +130,14 @@ namespace Majorca2022
 
         public void GBPButton_Clicked(object sender, EventArgs e)
         {            
-            double maj = 0;
+            double maj = Convert.ToDouble(input);
 
             try { Convert.ToDouble(input); } catch (Exception) { Box.Text = "Number Too Big"; input = ""; return; }
 
-            maj = Convert.ToDouble(input) / 1.16;
+            if (Client.varsyr == null) { maj = Convert.ToDouble(input) / 1.14; }
+            else { maj *= Convert.ToDouble(Client.varsyr); }
+            maj = Math.Round(maj, 2);
+
             string cultures = maj.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-GB"));
             Box.Text = "That's About " + cultures;
             input = "";
