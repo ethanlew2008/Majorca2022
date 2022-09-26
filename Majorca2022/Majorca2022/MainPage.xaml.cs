@@ -46,7 +46,7 @@ namespace Majorca2022
             if (month == 8 && day < 07 && year == 2022 || month < 8 && year == 2022) { before = true; FlyDayButton.Text = "Days"; }
             else { FlyDayButton.Text = "Flight"; }
             
-            if (hour > 6 && hour < 20) { BackgroundImageSource = "SerenAppDay.jpg"; Box.TextColor = Color.Black; }
+            if (hour > 6 && hour < 20) { BackgroundImageSource = "SerenAppDay.png"; Box.TextColor = Color.Black; }
             else { BackgroundImageSource = "SerenAppNight.png"; Box.TextColor = Color.White; }
 
             Box.Text = "1.Majorca\n2.Alicante";
@@ -227,7 +227,7 @@ namespace Majorca2022
                 sleep.Stop();
                 Box.Text = "Good Morning\n";
                 sleephours = sleep.ElapsedMilliseconds / 1000; sleephours /= 60;
-                
+
                 TimeSpan spWorkMin = TimeSpan.FromMinutes(sleephours);
                 string workHours = spWorkMin.ToString(@"hh\:mm");
                 Box.Text += "You Slept " + workHours;
@@ -235,13 +235,9 @@ namespace Majorca2022
                 SleepButton.Text = "Sleep";
 
                 int hour = DateTime.Now.Hour;
-                if (hour > 6 && hour < 20) { BackgroundImageSource = "SerenAppDay.jpg"; Box.TextColor = Color.Black; }
+                if (hour > 6 && hour < 20) { BackgroundImageSource = "SerenAppDay.png"; Box.TextColor = Color.Black; }
                 else { BackgroundImageSource = "SerenAppNight.png"; Box.TextColor = Color.White; }
             }
-        }
-
-       
-
-        
+        }       
     }
 }
