@@ -194,28 +194,12 @@ namespace Majorca2022
         }
 
         public  void TimeCount()
-        {   
-            Box.Text = "";input = "";
-            int mallorcahour = 0;
-            int londonhour = 0;
-            string minstring = Convert.ToString(DateTime.Now.Minute);
-
-            if (before) { londonhour = DateTime.Now.Hour; mallorcahour = londonhour + 1; }
-            else { mallorcahour = DateTime.Now.Hour; londonhour = mallorcahour - 1; }
-
-                if (londonhour >= 24) { londonhour -= 24; }
-                if (mallorcahour >= 24) { mallorcahour -= 24; }
-
-                if(minstring.Length == 1 && Convert.ToInt32(minstring) >= 10) { minstring += "0"; } 
-                if(minstring.Length == 1 && Convert.ToInt32(minstring) < 10) { minstring = ""; minstring += "0"; minstring += DateTime.Now.Minute; }
-
-                if (londonhour < 0) { londonhour *= -1; }
-                if (mallorcahour < 0) { mallorcahour *= -1; }
-
-                
-            Box.Text += "London:" + londonhour + ":"; if(minstring == "") { Box.Text += minstring; } else { Box.Text += minstring; }
-            if (alicante) { Box.Text += "\nAlicante:"; } else { Box.Text += "\nMajorca:"; }
-            Box.Text +=  mallorcahour + ":"; if (minstring == "") { Box.Text += minstring; } else { Box.Text += minstring; } 
+        {
+            string x;
+            if (alicante) { x = "\nAlicante: "; } else { x = "\nMajorca: "; }
+            if (DateTime.Now.Month > 3 && DateTime.Now.Month < 11) { Box.Text = "London: " + DateTime.UtcNow.AddHours(1).ToString("HH:mm") + x + DateTime.UtcNow.AddHours(2).ToString("HH:mm"); }
+            else { Box.Text = "London: " + DateTime.UtcNow.ToString("HH:mm") + x + DateTime.UtcNow.AddHours(1).ToString("HH:mm"); }
+            input = "";           
         }
 
         private void SleepButton_Clicked(object sender, EventArgs e)
