@@ -28,7 +28,9 @@ namespace Majorca2022
         int hour = DateTime.Now.Hour;
         int flightmins = 0;
 
-        Stopwatch flight = new Stopwatch(); double percentage = 0;
+        
+
+       Stopwatch flight = new Stopwatch(); double percentage = 0;
         Stopwatch sleep = new Stopwatch(); double sleephours = 0;
         APIClient Client = new APIClient();
 
@@ -52,11 +54,12 @@ namespace Majorca2022
             Box.Text = "1.Majorca\n2.Alicante";
         }
 
+     
         private void Button1_Clicked(object sender, EventArgs e)
         {
             input += "1"; Box.Text = input;
             if(pregunta == false) { majorca = true; TimeCount(); pregunta = true; }
-        }
+        }   
 
         private void Button2_Clicked(object sender, EventArgs e)
         {
@@ -129,17 +132,8 @@ namespace Majorca2022
         }
 
         public void GBPButton_Clicked(object sender, EventArgs e)
-        {            
-            double maj = Convert.ToDouble(input);
-
-            try { Convert.ToDouble(input); } catch (Exception) { Box.Text = "Number Too Big"; input = ""; return; }
-
-            if (Client.varsyr == null) { maj = Convert.ToDouble(input) / 1.14; }
-            else { maj *= Convert.ToDouble(Client.varsyr); }
-            maj = Math.Round(maj, 2);
-
-            string cultures = maj.ToString("C", System.Globalization.CultureInfo.GetCultureInfo("en-GB"));
-            Box.Text = "That's About " + cultures;
+        {
+            try { Box.Text = "£" + Math.Round(Convert.ToDouble(Box.Text) * Convert.ToDouble(Client.varsyr), 2); } catch (Exception) { };
             input = "";
         }
 
