@@ -56,60 +56,71 @@ namespace Majorca2022
 
      
         private void Button1_Clicked(object sender, EventArgs e)
-        {
+        {            
             input += "1"; Box.Text = input;
-            if(pregunta == false) { majorca = true; TimeCount(); pregunta = true; }
+            if (pregunta == true) { Box.Text = "€" + input; }
+            if (pregunta == false) { majorca = true; TimeCount(); pregunta = true; }           
         }   
 
         private void Button2_Clicked(object sender, EventArgs e)
         {
             input += "2"; Box.Text = input;
-            if(pregunta == false) { alicante = true; pregunta = true; TimeCount(); }
+            if (pregunta == true) { Box.Text = "€" + input; }
+            if (pregunta == false) { alicante = true; pregunta = true; TimeCount(); }
         }
 
         private void Button3_Clicked(object sender, EventArgs e)
         {
             input += "3"; Box.Text = input;
+            if (pregunta == true) { Box.Text = "€" + input; }
         }
 
         private void Button4_Clicked(object sender, EventArgs e)
         {
             input += "4"; Box.Text = input;
+            if (pregunta == true) { Box.Text = "€" + input; }
         }
 
         private void Button5_Clicked(object sender, EventArgs e)
         {
             input += "5"; Box.Text = input;
+            if (pregunta == true) { Box.Text = "€" + input; }
         }
 
         private void Button6_Clicked(object sender, EventArgs e)
         {
             input += "6"; Box.Text = input;
+            if (pregunta == true) { Box.Text = "€" + input; }
         }
 
         private void Button7_Clicked(object sender, EventArgs e)
         {
             input += "7"; Box.Text = input;
+            if (pregunta == true) { Box.Text = "€" + input; }
         }
 
         private void Button8_Clicked(object sender, EventArgs e)
         {
             input += "8"; Box.Text = input;
+            if (pregunta == true) { Box.Text = "€" + input; }
         }
 
         private void Button9_Clicked(object sender, EventArgs e)
         {
             input += "9"; Box.Text = input;
+            if (pregunta == true) { Box.Text = "€" + input; }
         }
 
         private void Dotbutton_Clicked(object sender, EventArgs e)
         {
             input += "."; Box.Text = input;
+            if (pregunta == true) { Box.Text = "€" + input; }
         }
 
         private void Button0_Clicked(object sender, EventArgs e)
         {
             input += "0"; Box.Text = input;
+            if (pregunta == true) { Box.Text = "€" + input; }
         }
 
         private void ButtonDel_Clicked(object sender, EventArgs e)
@@ -133,7 +144,8 @@ namespace Majorca2022
 
         public void GBPButton_Clicked(object sender, EventArgs e)
         {
-            try { Box.Text = "£" + Math.Round(Convert.ToDouble(Box.Text) * Convert.ToDouble(Client.varsyr), 2); } catch (Exception) { };
+            if (Box.Text.Contains("£")) { return; }
+            try { Box.Text = "£" + Math.Round(Convert.ToDouble(Box.Text.Substring(1)) / Convert.ToDouble(Client.varsyr), 2).ToString("0.00"); } catch (Exception) { };
             input = "";
         }
 
